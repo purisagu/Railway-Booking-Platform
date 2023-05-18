@@ -17,15 +17,15 @@ public class FetchAllTrain extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TrainDao dao = new TrainDao();
-		List<Train> list = dao.fetchall();
-	
+		List<Train> list = dao.fetchAll();
+
 		if (list.isEmpty()) {
-			resp.getWriter().print("<h1 style='color:red'>No Railway info Available</h1>");
+			resp.getWriter().print("<h1 style='color:red'>No Railway information Available</h1>");
 			req.getRequestDispatcher("ManagementHome.html").include(req, resp);
 		}
 		else {
 			req.setAttribute("list", list);
-			req.getRequestDispatcher("FetchRailwayInfo.jsp").forward(req,resp);
+			req.getRequestDispatcher("FetchRailwayInfo.jsp").forward(req, resp);
 		}
 	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginUser extends HttpServlet {
@@ -23,18 +24,23 @@ public class LoginUser extends HttpServlet {
 		User user=dao.find(userid);
 			
 		if(user == null) {
-			resp.getWriter().print("<h1 style='color:red'>invalid Id</h1>");
+			
+			resp.getWriter().print("<h1 style='color:red'>Invalid Id</h1>");
 			req.getRequestDispatcher("login.html").include(req, resp);
 		}
 		else {
 			
 			if(user.getPassword().equals(password)) {
+				
+				HttpSession session=req.getSession();
+				session.setAttribute("user", user);
+				
 				resp.getWriter().print("<h1 style='color:green'>Login Successfull</h1>");
 				req.getRequestDispatcher("UserHome.html").include(req, resp);
 
 			}
 			else {
-				resp.getWriter().print("<h1 style='color:red'>invalid Password</h1>");
+				resp.getWriter().print("<h1 style='color:red'>Invalid Password</h1>");
 				req.getRequestDispatcher("login.html").include(req, resp);
 			}
 				

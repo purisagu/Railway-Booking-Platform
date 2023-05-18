@@ -8,22 +8,23 @@ import javax.persistence.Persistence;
 import dto.User;
 
 public class UserDao {
-	EntityManagerFactory e = Persistence.createEntityManagerFactory("dev");
-	EntityManager m = e.createEntityManager();
-	EntityTransaction t = m.getTransaction();
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
+	EntityManager manager = factory.createEntityManager();
+	EntityTransaction transaction = manager.getTransaction();
 
 	public void save(User user) {
-		t.begin();
-		m.persist(user);
-		t.commit();
+		transaction.begin();
+		manager.persist(user);
+		transaction.commit();
 	}
 
 	public User find(int userid) {
-		return m.find(User.class, userid);
+		return manager.find(User.class, userid);
 	}
+	
 	public void update(User user) {
-		t.begin();
-		m.merge(user);
-		t.commit();
+		transaction.begin();
+		manager.merge(user);
+		transaction.commit();
 	}
 }

@@ -1,4 +1,4 @@
- package dto;
+package dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 public class Train {
 	@Id
-	int number ;
+	int number;
 	String name;
 	int seat;
-	String[] station;
+	String[] stations;
 	String[] price;
 	String[] time;
 	String[] days;

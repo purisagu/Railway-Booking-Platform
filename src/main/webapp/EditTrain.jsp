@@ -34,7 +34,7 @@ for(String price:train.getPrice())
 Stations:
 <textarea rows="5" cols="30" name="tstation">
 <%
-for(String station:train.getStation())
+for(String station:train.getStations())
 {
 	out.print(station+",");
 }

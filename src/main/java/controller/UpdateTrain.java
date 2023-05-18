@@ -41,12 +41,12 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	train.setPrice(trainprice);
 	train.setSeat(trainseat);
 	train.setTime(traintime);
-	train.setStation(trainstation);
+	train.setStations(trainstation);
 	
 	TrainDao dao=new TrainDao();
 	dao.update(train);
 	
-	List<Train> list=dao.fetchall();
+	List<Train> list=dao.fetchAll();
 	
 	resp.getWriter().print("<h1 style='color:blue'>Railway info updated Sucessfully</h1>");
 	req.setAttribute("list", list);

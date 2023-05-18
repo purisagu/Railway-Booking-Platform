@@ -28,14 +28,19 @@
 <tr>
 <th><%=train.getNumber() %></th>
 <th><%=train.getName() %></th>
-<th><%=train.getStation()[0] %></th>
-<th><%=train.getStation()[train.getStation().length-1] %></th>
+<th><%=train.getStations()[0] %></th>
+<th><%=train.getStations()[train.getStations().length-1] %></th>
 <th><%=train.getTime()[0] %></th>
 <th><%=train.getTime()[train.getTime().length-1] %></th>
 <th><%=train.getSeat() %></th>
 <th><%=Arrays.toString(train.getDays()) %></th>
-<th><a href="EditTrain.jsp?number=<%=train.getNumber()%>"><button>Book</button></a></th>
+<th><a href="BookTicket.jsp?tn=<%=train.getNumber()%>"><button>Book</button></a></th>
 </tr>
 <%} %>
+</table>
+<br>
+<br>
+<a href="UserHome.html"><button>Back</button></a>
+
 </body>
 </html>
